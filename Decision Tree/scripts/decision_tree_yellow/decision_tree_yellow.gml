@@ -1,37 +1,41 @@
-// Script assets have changed for v2.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
-function NoBase2() constructor{
+
+
+
+function NoBaseYellow() constructor{
 	
-	tomar_decisao2 = function(){
+	tomar_decisao = function(){
 	}	
 }
 //Nó utilizado para tomar a decisão lógica
-function NoDecisao2() : NoBase2() constructor{
+function NoDecisaoYellow() : NoBaseYellow() constructor{
 	
 	//Definindo os nós filhos 
-	no_sim2 = noone;
-	no_nao2 = noone;
+	no_sim = noone;
+	no_nao = noone;
 	
-	avaliar2 = function(){
+	avaliar = function(){
 		return false;	
 	}
 	
-	tomar_decisao2 = function(){
-		if avaliar2(){
-			return no_sim2;
+	tomar_decisao = function(){
+		if avaliar(){
+			return no_sim;
 		}
 		else{
-			return no_nao2;
+			return no_nao;
 		}
 	}
 }
 
 
-function NoAcao2() : NoBase2() constructor{
+function NoAcaoYellow() : NoBaseYellow() constructor{
 	
-	tomar_decisao2 = function(){
+	tomar_decisao = function(){
 		
 	}
 	
 }
+
+
+
 

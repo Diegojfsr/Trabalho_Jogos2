@@ -1,37 +1,41 @@
-// Script assets have changed for v3.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005377377 for more information
-function NoBase3() constructor{
+
+
+
+function NoBasePlayer() constructor{
 	
-	tomar_decisao3 = function(){
+	tomar_decisao = function(){
 	}	
 }
 //Nó utilizado para tomar a decisão lógica
-function NoDecisao3() : NoBase3() constructor{
+function NoDecisaoPlayer() : NoBasePlayer() constructor{
 	
 	//Definindo os nós filhos 
-	no_sim3 = noone;
-	no_nao3 = noone;
+	no_sim = noone;
+	no_nao = noone;
 	
-	avaliar3 = function(){
+	avaliar = function(){
 		return false;	
 	}
 	
-	tomar_decisao3 = function(){
-		if avaliar3(){
-			return no_sim3;
+	tomar_decisao = function(){
+		if avaliar(){
+			return no_sim;
 		}
 		else{
-			return no_nao3;
+			return no_nao;
 		}
 	}
 }
 
 
-function NoAcao3() : NoBase3() constructor{
+function NoAcaoPlayer() : NoBasePlayer() constructor{
 	
-	tomar_decisao3 = function(){
+	tomar_decisao = function(){
 		
 	}
 	
 }
+
+
+
 

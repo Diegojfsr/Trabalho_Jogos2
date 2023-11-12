@@ -1,100 +1,167 @@
 
 
-//VERIFICA SE ESTA LONGE >300PX
-function NoEstaLonge3() : NoDecisao3() constructor{
-	
-	m_agente3 = noone;
-	
-	avaliar3 = function(){
+//---------------------------------NO VERIFICA SE ESTA DISTANTE(DECISÃO)-----------------------------------
+function NoEstaDistantePlayer() : NoDecisaoPlayer() constructor{
+	m_agente = noone;
+	avaliar = function(){
 		var _dist = 0;
-		with(m_agente3){
-			_dist = point_distance(x, y, player.x, player.y);		
+		
+		with(m_agente){
+			_dist = point_distance(x, y, obj_player.x, obj_player.y);		
+		}
+		return (_dist > 400);
+	}	
+}
+
+//AÇÃO PATRULHAR
+function NoAcaoPatrulharPlayer() : NoAcaoPlayer() constructor{
+	m_agente = noone;
+	tomar_decisao = function(){
+		with(m_agente){				
+			ia_patrulharplayer();
+		}
+		return m_agente.no_raiz_player;
+	}
+}
+//------------------------------------------------------------------------------------------------------
+
+
+
+//------------------------------------NO ESTA ENTRE (DECISÃO)-----------------------------------
+//------------------------------------Verifica se a dist>300-----------------------------------
+function NoEstaLongePlayer() : NoDecisaoPlayer() constructor{
+	
+	m_agente = noone;
+	
+	avaliar = function(){
+		var _dist = 0;
+		with(m_agente){
+			_dist = point_distance(x, y, obj_player.x, obj_player.y);		
 		}
 		return (_dist > 300);
 	}	
 }
 
-//NO DE DECISÃO >300PX AÇÃO PATRULHAR
+//AÇÃO PERSEGUIR
 
-function NoAcaoPatrulhar3() : NoAcao3() constructor{
+function NoAcaoObstaculoPlayer() : NoAcaoPlayer() constructor{
 	
-	m_agente3 = noone;
+	m_agente = noone;
 	
-	tomar_decisao3 = function(){
-		with(m_agente3){
-			ia_patrulhar3();
+	tomar_decisao = function(){
+		with(m_agente){				
+			ia_obstaculoplayer();
 		}
-		return m_agente3.no_raiz3;
+		return m_agente.no_raiz_player;
 	}
-	
 }
+//------------------------------------------------------------------------------------
+
+
+//------------------------------------NO ESTA ENTRE 2 (DECISÃO)-----------------------------------
+//------------------------------------Verifica se a dist>200-----------------------------------
 
 
 
 
-//VERIFICA SE ESTA PERTO <100PX
-
-function NoEstaPerto3() : NoDecisao3() constructor{
+function NoEstaEntrePlayer() : NoDecisaoPlayer() constructor{
 	
-	m_agente3 = noone;
+	m_agente = noone;
 	
-	avaliar3 = function(){
+	avaliar = function(){
 		var _dist = 0;
-		with(m_agente3){
-			_dist = point_distance(x, y, player.x, player.y);		
+		with(m_agente){
+			_dist = point_distance(x, y, obj_player.x, obj_player.y);		
 		}
-		return (_dist < 100);
+		return (_dist > 200);
 	}	
 }
 
+//AÇÃO PERSEGUIR2
 
-//NO DE DECISÃO <100PX AÇÃO ATACAR
-function NoAcaoAtacar3() : NoAcao3() constructor{
+function NoAcaoPerseguirPlayer() : NoAcaoPlayer() constructor{
 	
-	m_agente3 = noone;
+	m_agente = noone;
 	
-	tomar_decisao3 = function(){
-		with(m_agente3){
-			//if (!esta_invertido){
-				//esta_invertido =false
-			ia_atacar3();
-			//}
+	tomar_decisao = function(){
+		with(m_agente){				
+			ia_perseguirplayer();
 		}
-		return m_agente3.no_raiz3;
+		return m_agente.no_raiz_player;
 	}
-	
 }
+//---------------------------------------------------------------------------------------------------
 
+//------------------------------------NO ESTA PERTO(DECISÃO)-----------------------------------
+//------------------------------------Verifica se a dist>100-----------------------------------
 
-//VERIFICA SE ESTA ENTRE 100PX E 300PX
-
-function NoEstaEntre3() : NoDecisao3() constructor{
+function NoEstaProximoPlayer() : NoDecisaoPlayer() constructor{
 	
-	m_agente3 = noone;
+	m_agente = noone;
 	
-	avaliar3 = function(){
+	avaliar = function(){
 		var _dist = 0;
-		with(m_agente3){
-			_dist = point_distance(x, y, player.x, player.y);		
+		with(m_agente){
+			_dist = point_distance(x, y, obj_player.x, obj_player.y);		
 		}
-		return (_dist > 100 and _dist < 300);
+		return (_dist > 100);//_dist < 200
 	}	
 }
 
-//NO DE DECISÃO ESTA ENTRE 100PX E 300PX AÇÃO PERSEGUIR
-function NoAcaoPerseguir3() : NoAcao3() constructor{
+//AÇÃO ATACAR
+
+function NoAcaoAtacarPlayer() constructor{
 	
-	m_agente3 = noone;
+	m_agente = noone;
 	
-	tomar_decisao3 = function(){
-		with(m_agente3){
-			
-			ia_perseguir3();
-		
+	tomar_decisao = function(){
+		with(m_agente){				
+			ia_atacarplayer()
 		}
-		return m_agente3.no_raiz3;
+		return m_agente.no_raiz_player;
 	}
-	
 }
+
+//---------------------------------------------------------------------------------------------------
+
+
+
+//------------------------------------NO ESTA PERTO2(DECISÃO)-----------------------------------
+//------------------------------------Verifica se a dist=0-----------------------------------
+
+function NoEstaPertoPlayer() : NoDecisaoPlayer() constructor{
+	
+	m_agente = noone;
+	
+	avaliar = function(){
+		var _dist = 0;
+		with(m_agente){
+			_dist = point_distance(x, y, obj_player.x, obj_player.y);		
+		}
+		return (_dist = 0);
+	}
+}
+
+//AÇÃO ATACAR2
+
+function NoAcaoGameOverPlayer() constructor{
+	
+	m_agente = noone;
+	
+	tomar_decisao = function(){
+		with(m_agente){				
+			ia_gameoverplayer()
+		}
+		return m_agente.no_raiz_player;
+	}
+}
+
+//---------------------------------------------------------------------------------------------------
+
+
+
+
+
+
 
 

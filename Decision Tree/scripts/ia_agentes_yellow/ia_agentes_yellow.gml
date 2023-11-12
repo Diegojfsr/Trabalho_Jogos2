@@ -1,66 +1,97 @@
-// Script assets have changed for v2.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
-
-function ia_atacar2(){
-
-	// Codigo que gera os tiros 
-	if municao >= 10{
-		
-			municao -= 10;//controla a municao
-			alarm[0] = 180;
-			destinox   = random_range(64, room_width-64);
-			destinoy   = random_range(64, room_height-64);
-		    instance_create_layer(x, y, "Instances", obj_yellow_powerball);
-			velocidade = 2;
-
-
-		    cooldown = 10;
-		
-		// Subtrai 1 da variável "cooldown" de cada quadro do jogo,
-		cooldown = cooldown - 1;
-		
-		escrever_estado = "ATACANDO";
-	}
-
-	// Controla a municao
-	if alarm[0] <= 0{
-		municao += 1;
-	}
-	municao = clamp(municao, 0, max_municao);
-}
 
 
 
+//FUNÇÃO NO ESTA DISTANTE AÇAO PATRULHAR
 
+function ia_patrulharyellow(){
 
- 
- 
-
-
-function ia_patrulhar2(){
-	var dist = point_distance(x, y, destinox2, destinoy2);
-
-	if dist >= 200
-		move_towards_point(destinox2, destinoy2, velocidade2)
+	velocidade =2;
+	 
+	var dist = point_distance(x, y, destinox, destinoy);
+	if dist >= 10
+		move_towards_point(destinox, destinoy, velocidade)
 	else{
 		randomize()
-		destinox2   = random_range(64, room_width-64);
-		destinoy2   = random_range(64, room_height-64);		
+		destinox   = random_range(64, room_width-64);
+		destinoy   = random_range(64, room_height-64);		
 	}
 	escrever_estado = "PATRULHANDO";
+	
 }
 
 
-function ia_perseguir2(){
-	
-velocidade2 =1
-//var dis = point_distance(x, y, obj_ponto.x, obj_ponto.y);
-move_towards_point( player.x, player.y, velocidade2)
-
-escrever_estado = "PERSEGUINDO";
+//---------------------------------------------------------------------------------------------------------
 
 
+//FUNÇÃO NO LONGE AÇAO CRIAR VIDA
 
+function ia_obstaculoyellow(){
+
+	if (frequencia > 0) {
+	    frequencia -= 1;
+	} else {
+	    // Crie o objeto
+	    instance_create_layer(x, y, "Instances", obj_superball_yellow2);
+	    frequencia = 60; // Configurado novamente para 60 passos (1 segundo a 60 FPS)
+	}
+	escrever_estado = "VIDA";
 }
 
+
+
+//---------------------------------------------------------------------------------------------------------
+
+
+
+
+//FUNÇÃO NO ESTA ENTRE  AÇAO PERSEGUIR 
+
+function ia_perseguiryellow(){
+/*
+	velocidade=1	
+	move_towards_point( obj_player.x, obj_player.y, velocidade)
+	escrever_estado = "PERSEGUIR";
+	escrever_estado = "PERSEGUIR";
+	*/
+}
+
+
+//---------------------------------------------------------------------------------------------------------
+
+
+//FUNÇÃO NO ESTA PERTO ACAO ATACAR
+
+function ia_atacaryellow(){
+
+	//instance_create_layer(x, y, "Instances", obj_superball_yellow);
 	
+	
+	if (frequencia > 0) {
+	    frequencia -= 1;
+	} else {
+	    // Crie o objeto
+	    instance_create_layer(x, y, "Instances", obj_superball_yellow);
+	    frequencia = 60; // Configurado novamente para 60 passos (1 segundo a 60 FPS)
+	}
+	escrever_estado = "SUPERBALL";
+
+}
+	
+
+//---------------------------------------------------------------------------------------------------------
+
+
+//FUNÇÃO NO ESTA PERTO ACAO GAME OVER
+
+function ia_gameoveryellow(){
+/*
+	 game_restart()
+	escrever_estado = "GAMEOVER";
+*/
+}
+	
+//---------------------------------------------------------------------------------------------------------
+
+
+
+
