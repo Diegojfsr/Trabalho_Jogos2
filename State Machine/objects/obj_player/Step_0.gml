@@ -1,18 +1,29 @@
 
+no_atual = no_atual.tomar_decisao();
 
-//Estados/scripts
-//Chama os scripts do objeto
-script_execute(estado_player_andando);
-script_execute(estado_player_atacando);
+// Movimento do Player
+if (keyboard_check(vk_right)) x += 4;
+if (keyboard_check(vk_left)) x -= 4;
+if (keyboard_check(vk_up)) y -= 4;
+if (keyboard_check(vk_down)) y += 4;
 
+// Girar o Player para ficar sempre de frente para o mouse
+image_angle = point_direction(x, y, mouse_x, mouse_y);
 
 
 
 
 // Desaparece a nave de um lado e aparece no outro
-move_wrap(true, true, 0);
+move_wrap(true, true, 0); 
 
-// Se a variavel vida < 0 o objeto e destruido
-//if (vida) <= 0 instance_destroy();
 // Contador vida = 0, destroi o obj
-if(vida < 0) game_restart();
+if(vida_player < 0) game_restart();
+
+
+
+
+
+
+
+
+

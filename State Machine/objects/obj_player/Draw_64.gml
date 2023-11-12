@@ -1,8 +1,16 @@
-/// @description Vida
-draw_text(x+50, y+10, vida);
+/// @description Vida | Municao
 
-draw_text(x+50, y+30, municao);
 
-draw_text(x+50, y+50, escrever_estado);
-//draw_text(x+50, y+70, escrever_estado2);
+//draw_text(x+30, y+50, "municao");
+draw_text(x+50, y+10, municao_player);
+
+draw_text(x+50, y+30, vida_player);
+
+//draw_text(x+50, y+50, escrever_estado_player);
+
+
+
+
+
+
 
