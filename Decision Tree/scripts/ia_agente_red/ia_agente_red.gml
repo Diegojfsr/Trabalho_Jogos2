@@ -67,7 +67,7 @@ function ia_atacar(){
 //---------------------------------------------------------------------------------------------------------
 
 
-//FUNÇÃO NO ESTA PERTO ACAO ATACAR
+//FUNÇÃO NO ESTA PERTO ACAO GAMEOVER
 
 function ia_gameover(){
 	 game_restart()
